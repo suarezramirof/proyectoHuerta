@@ -1,0 +1,30 @@
+/* * {
+    margin: 0;
+    border:0;
+    box-sizing: border-box;
+} */
+
+#agregarCultivo {
+    display: none;
+}
+
+#modificarCultivo {
+    display: none;
+}
+
+.iconoEditar {
+    width: 15px;
+}
+
+td {
+    text-align: center;
+}
+
+#huertaCultivo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li {
+    list-style-type: none;
+}

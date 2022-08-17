@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="huertaCultivo">
+        <div id="panelHuerta">
+            <div class="crearHuerta">
+                <label for="nombreHuerta">Nombre de la huerta</label><input type="text" id="nombreHuerta">
+                <label for="areaHuerta">Área de la huerta (m2)</label><input type="number" id="areaHuerta">
+            
+            </div>
+            <div id="botonesHuerta">
+                <button id="btnAgregarCultivo">Agregar cultivo</button>
+                <button id="guardarSalir">Guardar y salir</button>
+                <button id="eliminarCultivo">Eliminar selección</button>
+                <button id="btnCancelarCrear">Cancelar</button>
+            </div>
+            <div class="tablaHuerta">
+                <table>
+                    <tbody id="tablaCultivos">
+                        <tr><td>ID</td><td>Cultivo</td><td>Cantidad</td><td>Fecha de siembra</td><td>Modificar</td><td>Eliminar</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="agregarCultivo">
+            <form>
+                <ul id="selectorCultivos" class="inputAgregar"></ul>
+                <label for="cantidadCultivo">Cantidad de plantas<input type="number" id="cantidadCultivo" class="inputAgregar"></label>
+                <label for="fechaSiembra">Fecha de siembra<input type="date" id="fechaSiembra" class="inputAgregar"></label>
+                <!-- <input type="submit" id=""> -->
+            </form>
+            <button id="btnCargarCultivo">Cargar cultivo</button>
+            <button id="btnListo">Listo</button>
+        </div>
+        <div id="modificarCultivo">
+            <form>
+                <ul id="selectorCultivosModificar"></ul>
+                <label for="cantidadCultivoModificar">Cantidad de plantas<input type="number" id="cantidadCultivoModificar"></label>
+                <label for="fechaSiembraModificar">Fecha de siembra<input type="date" id="fechaSiembraModificar"></label>
+            </form>
+            <button id="btnModificarCultivo">Guardar</button>
+            <button id="btnCancelarModificacion">Cancelar</button>
+        </div>
+    </div>
+    <script src="../js/crear.js"></script>
+</body>
+</html>
