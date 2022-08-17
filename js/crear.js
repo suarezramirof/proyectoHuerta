@@ -1,9 +1,11 @@
-let visAgregarCultivo;
-if (JSON.parse(sessionStorage.getItem("visAgregarCultivo"))) {
-    visAgregarCultivo = true;
-    let seccionAgregarCultivo = document.getElementById("agregarCultivo");
+//Declaraciones iniciales
+let seccionAgregarCultivo = document.getElementById("agregarCultivo");
+let botonesHuerta = document.getElementById("botonesHuerta");
+let panelHuerta = document.getElementById("panelHuerta");
+let visAgregarCultivo; //Variable booleana para determinar la visibilidad de la sección "Agregar cultivo"
+if (JSON.parse(sessionStorage.getItem("visAgregarCultivo"))) { //Si la variable guardada en el storage es verdadera
+    visAgregarCultivo = true; //Establecer la variable booleana en verdadera
     seccionAgregarCultivo.style.display = "block";
-    let botonesHuerta = document.getElementById("botonesHuerta");
     botonesHuerta.style.display = "none";
 } else {
     visAgregarCultivo = false;
@@ -52,19 +54,19 @@ btnListo.onclick = listoCultivos;
 let btnCancelarCrear = document.getElementById("btnCancelarCrear");
 btnCancelarCrear.onclick = cancelarCrear;
 let inputsAgregar = document.getElementsByClassName("inputAgregar");
-inputsAgregar.forEach(addEventListener("keypress", function(event) {
-    if (event.key == "Enter") {
-        event.preventDefault();
-        btnCargarCultivo.click();
-    }
-}))
+for (input of inputsAgregar) {
+    input.addEventListener("keypress", function(event) {
+        if (event.key == "Enter") {
+            event.preventDefault();
+            btnCargarCultivo.click();
+        }
+    })
+}
     
 function agregarCultivo() {
     visAgregarCultivo = true;
     sessionStorage.setItem("visAgregarCultivo",JSON.stringify(visAgregarCultivo));
-    let seccionAgregarCultivo = document.getElementById("agregarCultivo");
     seccionAgregarCultivo.style.display = "block";
-    let botonesHuerta = document.getElementById("botonesHuerta");
     botonesHuerta.style.display = "none";
 }
 
@@ -100,9 +102,7 @@ function cargarCultivo() {
 }
 
 function listoCultivos() {
-    let seccionAgregarCultivo = document.getElementById("agregarCultivo");
     seccionAgregarCultivo.style.display = "none";
-    let botonesHuerta = document.getElementById("botonesHuerta");
     botonesHuerta.style.display = "block";
     visAgregarCultivo = false;
     sessionStorage.setItem("visAgregarCultivo",JSON.stringify(visAgregarCultivo));
@@ -140,9 +140,7 @@ function cancelarCrear() {
 }
 
 function modificarCultivo(id) {
-    let seccionAgregarCultivo = document.getElementById("agregarCultivo");
     seccionAgregarCultivo.style.display = "none";
-    let panelHuerta = document.getElementById("panelHuerta");
     panelHuerta.style.display = "none";
     let seccionModificarCultivo = document.getElementById("modificarCultivo");
     seccionModificarCultivo.style.display = "block";
@@ -164,10 +162,8 @@ function modificarCultivo(id) {
     }
     btnCancelarModificacion.onclick = function() {
         if (visAgregarCultivo) {
-            let seccionAgregarCultivo = document.getElementById("agregarCultivo");
             seccionAgregarCultivo.style.display = "block";
         }
-        let panelHuerta = document.getElementById("panelHuerta");
         panelHuerta.style.display = "block";
         let seccionModificarCultivo = document.getElementById("modificarCultivo");
         seccionModificarCultivo.style.display = "none";
@@ -190,10 +186,8 @@ function guardarModificarCultivo(cultivoElegido) {
     misHuertas[huertaActual] = miHuerta;
     localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
     if (visAgregarCultivo) {
-        let seccionAgregarCultivo = document.getElementById("agregarCultivo");
         seccionAgregarCultivo.style.display = "block";
     }
-    let panelHuerta = document.getElementById("panelHuerta");
     panelHuerta.style.display = "block";
     let seccionModificarCultivo = document.getElementById("modificarCultivo");
     seccionModificarCultivo.style.display = "none";
