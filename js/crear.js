@@ -1,76 +1,60 @@
 //Declaraciones iniciales
-let seccionAgregarCultivo = document.getElementById("agregarCultivo");
-let botonesHuerta = document.getElementById("botonesHuerta");
-let panelHuerta = document.getElementById("panelHuerta");
-let visAgregarCultivo; //Variable booleana para determinar la visibilidad de la sección "Agregar cultivo"
-if (JSON.parse(sessionStorage.getItem("visAgregarCultivo"))) { //Si la variable guardada en el storage es verdadera
-    visAgregarCultivo = true; //Establecer la variable booleana en verdadera
-    seccionAgregarCultivo.style.display = "block";
-    botonesHuerta.style.display = "none";
-} else {
-    visAgregarCultivo = false;
-}
-
-let listaCultivos = JSON.parse(localStorage.getItem("cultivos"));
+const botonesHuerta = document.getElementsByClassName("btnHuerta");
+const panelHuerta = document.getElementById("panelHuerta");
+const btnAgregarCultivo = document.getElementById("btnAgregarCultivo");
+const botonGuardarSalir = document.getElementById("guardarSalir");
+const btnCancelarCrear = document.getElementById("btnCancelarCrear");
+const seccionAgregarCultivo = document.getElementById("agregarCultivo");
+const listaCultivos = JSON.parse(localStorage.getItem("cultivos"));
 let misHuertas = JSON.parse(localStorage.getItem("misHuertas"));
 let huertaActual = JSON.parse(localStorage.getItem("huertaActual"));
-let botonesModificarCultivo;
-const miHuerta = misHuertas[huertaActual];
-if (miHuerta[1]) {
-    let nombreHuerta = document.getElementById("nombreHuerta");
-    nombreHuerta.value = miHuerta[1];
-    let areaHuerta = document.getElementById("areaHuerta");
-    areaHuerta.value = miHuerta[2];
-    if (miHuerta[4][0]) {
-        let tablaCultivos = document.getElementById("tablaCultivos");
-        for (let i = 0; i < miHuerta[4].length; i++) {
-            let posicion = miHuerta[4][i];
-            tablaCultivos.innerHTML += `<tr><td>${i + 1}</td>
-            <td>${listaCultivos[posicion[0]]["nombre"]}</td><td>${posicion[1]}</td><td>${posicion[2]}</td><td><button class="botonesModificarCultivo"><img class="iconoEditar" src="../icons/editar.png" alt="Editar"></button></td><td><input type="checkbox" class="checksEliminarCultivo"></td></tr>`
-        }
-        botonesModificarCultivo = document.getElementsByClassName("botonesModificarCultivo");
-        for (let i = 0; i < botonesModificarCultivo.length; i++) {
-            botonesModificarCultivo[i].onclick = function() {
-                modificarCultivo(i);
-            }
-        }
-    }
+let miHuerta = misHuertas[huertaActual];
+let visAgregarCultivo = (JSON.parse(sessionStorage.getItem("visAgregarCultivo")) == true);
+if (visAgregarCultivo) {
+    selectorCultivosAgregar();
+    let btnCargarCultivo = document.getElementById("btnCargarCultivo");
+    btnCargarCultivo.onclick = cargarCultivo;
+    let btnListo = document.getElementById("btnListo");
+    btnListo.onclick = listoCultivos;
+    seccionAgregarCultivo.style.display = "block";
 }
-
-let selectorCultivos = document.getElementById("selectorCultivos");
-let elementosSelectorCultivos = "";
-for (let cultivo of Object.keys(listaCultivos)) {
-    elementosSelectorCultivos += `<li><input type="radio" name="cultivos" value="${cultivo}" id="${cultivo}">${listaCultivos[cultivo]["nombre"]}</li>`;
-}
-selectorCultivos.innerHTML = elementosSelectorCultivos;
-let btnAgregarCultivo = document.getElementById("btnAgregarCultivo");
 btnAgregarCultivo.onclick = agregarCultivo;
-let botonGuardarSalir = document.getElementById("guardarSalir");
 botonGuardarSalir.onclick = guardarSalir;
-let btnCargarCultivo = document.getElementById("btnCargarCultivo");
-btnCargarCultivo.onclick = cargarCultivo;
-let btnListo = document.getElementById("btnListo");
-btnListo.onclick = listoCultivos;
-let btnCancelarCrear = document.getElementById("btnCancelarCrear");
 btnCancelarCrear.onclick = cancelarCrear;
-let inputsAgregar = document.getElementsByClassName("inputAgregar");
-for (input of inputsAgregar) {
-    input.addEventListener("keypress", function(event) {
-        if (event.key == "Enter") {
-            event.preventDefault();
-            btnCargarCultivo.click();
-        }
-    })
+let botonesModificarCultivo;
+if (miHuerta[1]) { //Esta condición solo se cumple si entro a ver/modificar una huerta, si es nueva como [1] es "", no se ejecuta.
+    recargar();
 }
-    
+function selectorCultivosAgregar() {
+    let selectorCultivos = document.getElementById("selectorCultivos");
+    let listaSelectores = "";
+    for (let key of Object.keys(listaCultivos)) {
+        listaSelectores += `<li><input type="radio" name="cultivos" value="${key}" id="${key}">${listaCultivos[key]["nombre"]}</li>`;
+    }
+    selectorCultivos.innerHTML = listaSelectores;
+}
 function agregarCultivo() {
+    for (boton of botonesHuerta) {
+        boton.disabled = true;
+    }
+    selectorCultivosAgregar();
+    let btnCargarCultivo = document.getElementById("btnCargarCultivo");
+    btnCargarCultivo.onclick = cargarCultivo;
+    let btnListo = document.getElementById("btnListo");
+    btnListo.onclick = listoCultivos;
+    let inputsAgregar = document.getElementsByClassName("inputAgregar");
+    for (input of inputsAgregar) {
+        input.addEventListener("keypress", function(event) {
+            if (event.key == "Enter") {
+                event.preventDefault();
+                btnCargarCultivo.click();
+            }
+        })
+    }
     visAgregarCultivo = true;
     sessionStorage.setItem("visAgregarCultivo",JSON.stringify(visAgregarCultivo));
     seccionAgregarCultivo.style.display = "block";
-    botonesHuerta.style.display = "none";
 }
-
-
 //Función ejecutada con el botón cargar cultivo. Pasa un array con el número del cultivo elegido, la cantidad y la fecha de siembra.
 function cargarCultivo() {
     let cantidad = document.getElementById("cantidadCultivo").value;
@@ -88,10 +72,13 @@ function cargarCultivo() {
         let cultivo = [cultivoElegido,cantidad,fechaSiembra];
         miHuerta[4].push(cultivo);
         let posicion = miHuerta[4][miHuerta[4].length - 1];
-        document.getElementById("tablaCultivos").innerHTML+=`<tr><td>${miHuerta[4].length}</td>
-        <td>${listaCultivos[posicion[0]]["nombre"]}</td><td>${posicion[1]}</td><td>${posicion[2]}</td><td><button class="botonesModificarCultivo"><img class="iconoEditar" src="../icons/editar.png" alt="Editar"></button></td><td><input type="checkbox" class="checksEliminarCultivo"></td></tr>`;
+        let tablaCultivos = document.getElementById("tablaCultivos");
+        if (!tablaCultivos.innerHTML) {
+            tablaCultivos.innerHTML = `<tr><td>ID</td><td>Cultivo</td><td>Cantidad</td><td>Fecha de siembra</td><td>Modificar</td><td>Eliminar</td></tr>`
+        }
+        tablaCultivos.innerHTML+=`<tr><td>${miHuerta[4].length}</td><td>${listaCultivos[posicion[0]]["nombre"]}</td><td>${posicion[1]}</td><td>${posicion[2]}</td><td><button class="botonesModificarCultivo"><img class="iconoEditar" src="../icons/editar.png" alt="Editar"></button></td><td><input type="checkbox" class="checksEliminarCultivo"></td></tr>`;
         misHuertas[huertaActual] = miHuerta;
-        localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
+        // localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
     }
     botonesModificarCultivo = document.getElementsByClassName("botonesModificarCultivo");
     for (let i = 0; i < botonesModificarCultivo.length; i++) {
@@ -102,15 +89,17 @@ function cargarCultivo() {
 }
 
 function listoCultivos() {
+    for (boton of botonesHuerta) {
+        boton.disabled = false;
+    }
     seccionAgregarCultivo.style.display = "none";
-    botonesHuerta.style.display = "block";
     visAgregarCultivo = false;
     sessionStorage.setItem("visAgregarCultivo",JSON.stringify(visAgregarCultivo));
 }
 
 function guardarSalir() {
-    let nombreHuerta = document.getElementById("nombreHuerta").value;
-    let areaHuerta = document.getElementById("areaHuerta").value;
+    nombreHuerta = document.getElementById("nombreHuerta").value;
+    areaHuerta = document.getElementById("areaHuerta").value;
     if (nombreHuerta && areaHuerta) {
         miHuerta[1] = nombreHuerta;
         miHuerta[2] = areaHuerta;
@@ -132,6 +121,29 @@ function guardarSalir() {
 }
 
 function cancelarCrear() {
+    if (!(document.getElementById("nombreHuerta").value == miHuerta[1] && document.getElementById("areaHuerta").value == miHuerta[2] && JSON.stringify(miHuerta[4]) == JSON.stringify(JSON.parse(localStorage.getItem("misHuertas"))[huertaActual][4]))) {
+        let confirmacionCancelar = document.getElementById("confirmacionCancelar");
+        confirmacionCancelar.showModal();
+        document.getElementById("siGuardarCambios").onclick = function() {
+            confirmacionCancelar.close();
+            guardarSalir();
+        }
+        document.getElementById("noGuardarCambios").onclick = function() {
+            confirmacionCancelar.close();
+            salirSinGuardar();
+        }
+        document.getElementById("noSalir").onclick = function() {
+            confirmacionCancelar.close();
+        }
+    } else {
+        if (!miHuerta[1]) {
+            misHuertas.pop();
+            localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
+        }
+        window.location.assign("../index.html");
+    }
+}
+function salirSinGuardar() {
     if (!miHuerta[1]) {
         misHuertas.pop();
         localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
@@ -178,18 +190,41 @@ function guardarModificarCultivo(cultivoElegido) {
             id = cultivos[i].value;
         }
     }
-    cantidad = document.getElementById("cantidadCultivoModificar").value;
-    fechaSiembra = document.getElementById("fechaSiembraModificar").value;
+    let cantidad = document.getElementById("cantidadCultivoModificar").value;
+    let fechaSiembra = document.getElementById("fechaSiembraModificar").value;
     miHuerta[4][cultivoElegido][0] = id;
     miHuerta[4][cultivoElegido][1] = cantidad;
     miHuerta[4][cultivoElegido][2] = fechaSiembra;
     misHuertas[huertaActual] = miHuerta;
-    localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
+    // localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
     if (visAgregarCultivo) {
         seccionAgregarCultivo.style.display = "block";
     }
     panelHuerta.style.display = "block";
     let seccionModificarCultivo = document.getElementById("modificarCultivo");
     seccionModificarCultivo.style.display = "none";
-    location.reload();
+    recargar(true);
 }
+
+function recargar(a) {
+    if (!a) {
+        misHuertas = JSON.parse(localStorage.getItem("misHuertas"));
+        miHuerta = misHuertas[huertaActual];
+    }
+    document.getElementById("nombreHuerta").value = miHuerta[1];
+    document.getElementById("areaHuerta").value = miHuerta[2];
+    if (miHuerta[4][0]) {
+        let tablaCultivos = document.getElementById("tablaCultivos");
+        let listaTablaCultivos = "";
+        for (let i = 0; i < miHuerta[4].length; i++) {
+            let posicion = miHuerta[4][i];
+            listaTablaCultivos += `<tr><td>${i + 1}</td><td>${listaCultivos[posicion[0]]["nombre"]}</td><td>${posicion[1]}</td><td>${posicion[2]}</td><td><button class="botonesModificarCultivo"><img class="iconoEditar" src="../icons/editar.png" alt="Editar"></button></td><td><input type="checkbox" class="checksEliminarCultivo"></td></tr>`
+        }
+        tablaCultivos.innerHTML = `<tr><td>ID</td><td>Cultivo</td><td>Cantidad</td><td>Fecha de siembra</td><td>Modificar</td><td>Eliminar</td></tr>${listaTablaCultivos}`
+        botonesModificarCultivo = document.getElementsByClassName("botonesModificarCultivo");
+        for (let i = 0; i < botonesModificarCultivo.length; i++) {
+            botonesModificarCultivo[i].onclick = function() {
+                modificarCultivo(i);
+            }
+        }
+    }}

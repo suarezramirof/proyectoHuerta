@@ -16,16 +16,14 @@
             
             </div>
             <div id="botonesHuerta">
-                <button id="btnAgregarCultivo">Agregar cultivo</button>
-                <button id="guardarSalir">Guardar y salir</button>
-                <button id="eliminarCultivo">Eliminar selección</button>
-                <button id="btnCancelarCrear">Cancelar</button>
+                <button class="btnHuerta" id="btnAgregarCultivo">Agregar cultivo</button>
+                <button class="btnHuerta" id="guardarSalir">Guardar y salir</button>
+                <button class="btnHuerta" id="eliminarCultivo">Eliminar selección</button>
+                <button class="btnHuerta" id="btnCancelarCrear">Salir</button>
             </div>
             <div class="tablaHuerta">
                 <table>
-                    <tbody id="tablaCultivos">
-                        <tr><td>ID</td><td>Cultivo</td><td>Cantidad</td><td>Fecha de siembra</td><td>Modificar</td><td>Eliminar</td></tr>
-                    </tbody>
+                    <tbody id="tablaCultivos"></tbody>
                 </table>
             </div>
         </div>
@@ -48,6 +46,16 @@
             <button id="btnModificarCultivo">Guardar</button>
             <button id="btnCancelarModificacion">Cancelar</button>
         </div>
+    </div>
+    <div>
+        <dialog id="confirmacionCancelar">
+            <p>¿Desea guardar los cambios realizados?</p>
+            <menu>
+                <button id="siGuardarCambios">Sí</button>
+                <button id="noGuardarCambios">No</button>
+                <button id="noSalir">Cancelar</button>
+            </menu>
+        </dialog>
     </div>
     <script src="../js/crear.js"></script>
 </body>

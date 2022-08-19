@@ -64,7 +64,7 @@ function borrarTodo() {
 }
 
 function crearHuerta() {
-    misHuertas.push([misHuertas.length + 1,undefined,undefined,undefined,[]]);
+    misHuertas.push([misHuertas[misHuertas.length - 1] ? misHuertas[misHuertas.length - 1][0] + 1 : 1,"",0,undefined,[]]);
     huertaActual = misHuertas.length - 1;
     localStorage.setItem("huertaActual",JSON.stringify(huertaActual));
     localStorage.setItem("misHuertas",JSON.stringify(misHuertas));
@@ -78,3 +78,4 @@ function verHuertas() {
         alert("No hay huertas creadas aún");
     }
 }
+
