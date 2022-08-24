@@ -6,7 +6,9 @@ const cultivos = {
         distanciaLineas: 60,
         distanciaPlantas: 20,
         tiempoCosechar: [2,3],
-        riego: "moderado"
+        riego: "moderado",
+        siembra: "Todo el año",
+        fotos: []
     },
     2:
     {
@@ -40,7 +42,6 @@ const cultivos = {
         tiempoCosechar: [4,4],
         riego: "abundante"
     }
-    
 }
 localStorage.setItem("cultivos",JSON.stringify(cultivos));
 let misHuertas;
@@ -57,10 +58,26 @@ let btnBorrarTodo = document.getElementById("borrarTodo");
 btnBorrarTodo.onclick = borrarTodo;
 
 function borrarTodo() {
-    if (confirm("¿Está seguro de que desea eliminar todo?")) {
-        window.localStorage.removeItem("misHuertas");
-        misHuertas = [];
-    }
+    swal.fire({
+        title: '¿Está seguro?',
+        text: "No podrá deshacer esta acción",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar todo',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Borrado',
+                'Se eliminaron todos los datos',
+                'success'
+            )
+            window.localStorage.removeItem("misHuertas");
+            misHuertas = [];
+        }
+    })
 }
 
 function crearHuerta() {
@@ -75,7 +92,11 @@ function verHuertas() {
     if (misHuertas[0]) {
         window.location.assign("pages/mishuertas.html");
     } else {
-        alert("No hay huertas creadas aún");
+        Swal.fire(
+            'Mmm...',
+            'No hay huertas creadas',
+            'error'
+        )
     }
 }
 

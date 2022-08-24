@@ -20,11 +20,50 @@ td {
     text-align: center;
 }
 
-#huertaCultivo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.inputsAgregarCultivo {
+    display: flex;
 }
 
-li {
-    list-style-type: none;
+input {
+    text-align: center;
+    width: 50px;
+}
+
+select {
+    width: 100px;
+}
+
+table {
+    border: 2px solid gray;
+    border-collapse: collapse;
+}
+
+tbody {
+    border: none;
+    padding: 0;
+}
+
+thead {
+    background-color:rgba(119, 119, 173, 0.648);
+}
+
+th {
+    padding: 0 2rem 0 2rem;
+}
+
+td {
+    border: 2px solid gray;
+    padding: 0.25rem 0;
+}
+
+#pieTablaCultivos {
+    display: none;
+}
+
+#fechaSiembra, #fechaSiembraModificar {
+    width: 9rem;
+}
+
+#nombreHuerta {
+    width: 10rem;
 }
