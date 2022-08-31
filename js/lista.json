@@ -1,0 +1,131 @@
+{
+    "1": {
+        "nombre": "Acelga",
+        "distanciaLineas": 60,
+        "distanciaPlantas": 20,
+        "tiempoCosechar": [
+            2,
+            3
+        ],
+        "riego": "moderado",
+        "siembra": [
+            13
+        ],
+        "div": "green"
+    },
+    "2": {
+        "nombre": "Apio",
+        "distanciaLineas": 40,
+        "distanciaPlantas": 15,
+        "tiempoCosechar": [
+            4,
+            4
+        ],
+        "riego": "abundante",
+        "siembra": [
+            13
+        ],
+        "div": "lightgreen"
+    },
+    "3": {
+        "nombre": "Espinaca",
+        "distanciaLineas": 40,
+        "distanciaPlantas": 8,
+        "tiempoCosechar": [
+            2,
+            3
+        ],
+        "riego": "moderado",
+        "siembra": [
+            13
+        ],
+        "div": "darkgreen"
+    },
+    "4": {
+        "nombre": "Lechuga",
+        "distanciaLineas": 60,
+        "distanciaPlantas": 25,
+        "tiempoCosechar": [
+            3,
+            4
+        ],
+        "riego": "moderado",
+        "siembra": [
+            13
+        ],
+        "div": "green"
+    },
+    "5": {
+        "nombre": "Pepino",
+        "distanciaLineas": 180,
+        "distanciaPlantas": 75,
+        "tiempoCosechar": [
+            3,
+            4
+        ],
+        "riego": "moderado",
+        "siembra": [
+            9,
+            10,
+            11,
+            12
+        ],
+        "div": "green"
+    },
+    "6": {
+        "nombre": "Puerro",
+        "distanciaLineas": 40,
+        "distanciaPlantas": 8,
+        "tiempoCosechar": [
+            4,
+            5
+        ],
+        "riego": "moderado",
+        "siembra": [
+            9,
+            10,
+            11,
+            12,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "div": "darkgreen"
+    },
+    "7": {
+        "nombre": "Sandía",
+        "distanciaLineas": 180,
+        "distanciaPlantas": 100,
+        "tiempoCosechar": [
+            2,
+            4
+        ],
+        "riego": "abundante",
+        "siembra": [
+            9,
+            10,
+            11,
+            12,
+            1,
+            2
+        ],
+        "div": "darkgreen"
+    },
+    "8": {
+        "nombre": "Tomate",
+        "distanciaLineas": 120,
+        "distanciaPlantas": 40,
+        "tiempoCosechar": [
+            3,
+            4
+        ],
+        "riego": "moderado",
+        "siembra": [
+            8,
+            9
+        ],
+        "div": "red"
+    }
+}

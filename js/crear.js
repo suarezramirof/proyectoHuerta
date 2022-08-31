@@ -1,4 +1,5 @@
 //Declaraciones iniciales
+const esquemaHuerta = document.getElementById("esquemaHuerta");
 const DateTime = luxon.DateTime;
 const botonesHuerta = document.getElementsByClassName("btnHuerta");
 const panelHuerta = document.getElementById("panelHuerta");

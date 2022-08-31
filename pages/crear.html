@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+    <title>Crear huerta</title>
 </head>
 <body>
-    <div id="huertaCultivo">
+    <div class="divPrincipal divPrincipalCrear" id="huertaCultivo">
         <div id="panelHuerta">
             <div class="crearHuerta">
                 <label for="nombreHuerta">Nombre de la huerta</label><input type="text" id="nombreHuerta">
                 <label for="areaHuerta">Área de la huerta (m2)</label><input type="number" id="areaHuerta">
             </div>
-            <div id="botonesHuerta">
+            <div id="botonesHuertaSuperiores">
                 <button class="btnHuerta" id="btnAgregarCultivo">Agregar cultivo</button>
                 <button class="btnHuerta" id="guardarSalir">Guardar y salir</button>
-                <button class="btnHuerta" id="btnEliminarCultivo">Eliminar selección</button>
-                <button class="btnHuerta" id="btnCancelarCrear">Salir</button>
             </div>
             <div class="tablaHuerta">
                 <table>
@@ -26,6 +24,10 @@
                     <tbody id="tablaCultivos"></tbody>
                     <tfoot id="pieTablaCultivos"><td></td><td><select id="dropDownCultivos"></select></td><td><input type="number" id="cantidadCultivo" class="inputAgregar" placeholder="0"></td><td><input type="date" id="fechaSiembra" class="inputAgregar"></td><td></td><td></td></tfoot>
                 </table>
+            </div>
+            <div id="botonesHuertaInferiores">
+                <button class="btnHuerta" id="btnEliminarCultivo">Eliminar selección</button>
+                <button class="btnHuerta" id="btnCancelarCrear">Salir</button>
             </div>
         </div>
         <div id="agregarCultivo">
@@ -43,16 +45,6 @@
             <button id="btnModificarCultivo">Guardar</button>
             <button id="btnCancelarModificacion">Cancelar</button>
         </div>
-    </div>
-    <div>
-        <dialog id="confirmacionCancelar">
-            <p>¿Desea guardar los cambios realizados?</p>
-            <menu>
-                <button id="siGuardarCambios">Sí</button>
-                <button id="noGuardarCambios">No</button>
-                <button id="noSalir">Cancelar</button>
-            </menu>
-        </dialog>
     </div>
     <script src="../js/luxon.min.js"></script>
     <script src="../js/sweetalert2.all.min.js"></script>

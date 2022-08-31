@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,22 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <button id="btnCrearHuerta">Crear nueva huerta</button>
-    <button id="verMisHuertas">Ver mis huertas</button>
-    <button id="info">Información</button>
-    <button id="borrarTodo">Eliminar todo</button>
-    <script src="../js/sweetalert2.all.min.js"></script>
+    <div class="divPrincipal">
+        <div class="logo">
+            <img class="imgLogo" src="img/logo_sin_fondo.png" alt="De raíz">
+        </div>
+        <div class="botonesIndex">
+            <button class="botonIndex" id="btnCrearHuerta">Crear huerta</button>
+            <button class="botonIndex" id="verMisHuertas">Ver huertas</button>
+            <button class="botonIndex" id="info">Información</button>
+            <button class="botonIndex" id="borrarTodo">Eliminar todo</button>
+        </div>
+    </div>
+    <p id="json"></p>
+    <script src="js/sweetalert2.all.min.js"></script>
     <script src="index.js"></script>
 </body>
+
 </html>
