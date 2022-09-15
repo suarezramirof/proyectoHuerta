@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Información</title>
 </head>
-<body>
-    <div class="divPrincipal divInformacion">
-        <div>
+
+<body class="bodySec">
+    <div class="logoSec">
+        <img class="imgLogo" src="../img/logo_sin_fondo.png" alt="De raíz">
+    </div>
+    <div class="divSecundario">
+        <div class="divInformacion">
+            <div class="divTabla">
+                <table class="tablaInfo">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Meses de siembra</th>
+                            <th>Distancia entre líneas</th>
+                            <th>Distancia entre plantas</th>
+                            <th>Siembra</th>
+                            <th>Riego</th>
+                            <th>Meses hasta cosecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaInfo">
             
+                    </tbody>
+                </table>
+            </div>
+            <div class="controlesInfo">
+                <button class="botonInfo" id="infoVolver">
+                    Volver
+                </button>
+            </div>
         </div>
     </div>
+    <footer>
+        <div>
+            <img src="../img/footer.png" alt="">
+        </div>
+    </footer>
+    <script src="../js/info.js"></script>
 </body>
+
 </html>

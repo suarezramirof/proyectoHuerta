@@ -9,8 +9,9 @@
         ],
         "riego": "moderado",
         "siembra": [
-            13
+            0
         ],
+        "tsiembra": 3,
         "div": "green"
     },
     "2": {
@@ -23,11 +24,27 @@
         ],
         "riego": "abundante",
         "siembra": [
-            13
+            0
         ],
+        "tsiembra": 1,
         "div": "lightgreen"
     },
     "3": {
+        "nombre": "Berenjena",
+        "distanciaLineas": 60,
+        "distanciaPlantas": 50,
+        "tiempoCosechar": [
+            3
+        ],
+        "riego": "abundante",
+        "siembra": [
+            8,
+            12
+        ],
+        "tsiembra": 1,
+        "div": "violet"
+    },
+    "4": {
         "nombre": "Espinaca",
         "distanciaLineas": 40,
         "distanciaPlantas": 8,
@@ -37,11 +54,12 @@
         ],
         "riego": "moderado",
         "siembra": [
-            13
+            0
         ],
+        "tsiembra": 2,
         "div": "darkgreen"
     },
-    "4": {
+    "5": {
         "nombre": "Lechuga",
         "distanciaLineas": 60,
         "distanciaPlantas": 25,
@@ -51,11 +69,12 @@
         ],
         "riego": "moderado",
         "siembra": [
-            13
+            0
         ],
+        "tsiembra": 3,
         "div": "green"
     },
-    "5": {
+    "6": {
         "nombre": "Pepino",
         "distanciaLineas": 180,
         "distanciaPlantas": 75,
@@ -66,13 +85,12 @@
         "riego": "moderado",
         "siembra": [
             9,
-            10,
-            11,
             12
         ],
+        "tsiembra": 3,
         "div": "green"
     },
-    "6": {
+    "7": {
         "nombre": "Puerro",
         "distanciaLineas": 40,
         "distanciaPlantas": 8,
@@ -83,18 +101,12 @@
         "riego": "moderado",
         "siembra": [
             9,
-            10,
-            11,
-            12,
-            1,
-            2,
-            3,
-            4,
             5
         ],
+        "tsiembra": 1,
         "div": "darkgreen"
     },
-    "7": {
+    "8": {
         "nombre": "Sandía",
         "distanciaLineas": 180,
         "distanciaPlantas": 100,
@@ -105,15 +117,12 @@
         "riego": "abundante",
         "siembra": [
             9,
-            10,
-            11,
-            12,
-            1,
             2
         ],
+        "tsiembra": 3,
         "div": "darkgreen"
     },
-    "8": {
+    "9": {
         "nombre": "Tomate",
         "distanciaLineas": 120,
         "distanciaPlantas": 40,
@@ -126,6 +135,7 @@
             8,
             9
         ],
+        "tsiembra": 1,
         "div": "red"
     }
 }

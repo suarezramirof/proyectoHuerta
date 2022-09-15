@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,47 +8,80 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>Crear huerta</title>
 </head>
-<body>
-    <div class="divPrincipal divPrincipalCrear" id="huertaCultivo">
+
+<body class="bodySec">
+    <div class="logoSec">
+        <img src="../img/logo_sin_fondo.png" alt="">
+    </div>
+    <div class="divSecundario" id="huertaCultivo">
         <div id="panelHuerta">
             <div class="crearHuerta">
-                <label for="nombreHuerta">Nombre de la huerta</label><input type="text" id="nombreHuerta">
-                <label for="areaHuerta">Área de la huerta (m2)</label><input type="number" id="areaHuerta">
-            </div>
-            <div id="botonesHuertaSuperiores">
-                <button class="btnHuerta" id="btnAgregarCultivo">Agregar cultivo</button>
-                <button class="btnHuerta" id="guardarSalir">Guardar y salir</button>
+                <label for="nombreHuerta">HUERTA</label><input type="text" id="nombreHuerta"
+                    placeholder="Introduzca el nombre">
+                <label for="areaHuerta">ÁREA (m2)</label><input type="number" id="areaHuerta"
+                    placeholder="Introduzca el área" min="0">
             </div>
             <div class="tablaHuerta">
                 <table>
-                    <thead><th>ID</th><th>Cultivo</th><th>Cantidad</th><th>Fecha de siembra</th><th>Modificar</th><th>Eliminar</th></thead>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cultivo</th>
+                            <th>Cantidad</th>
+                            <th>Fecha de siembra</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
                     <tbody id="tablaCultivos"></tbody>
-                    <tfoot id="pieTablaCultivos"><td></td><td><select id="dropDownCultivos"></select></td><td><input type="number" id="cantidadCultivo" class="inputAgregar" placeholder="0"></td><td><input type="date" id="fechaSiembra" class="inputAgregar"></td><td></td><td></td></tfoot>
+                    <tfoot id="pieTablaCultivos">
+                        <td></td>
+                        <td><select id="dropDownCultivos"></select></td>
+                        <td><input type="number" id="cantidadCultivo" class="inputAgregar" placeholder="0" min="1"></td>
+                        <td><input type="date" id="fechaSiembra" class="inputAgregar"></td>
+                        <td></td>
+                        <td></td>
+                    </tfoot>
                 </table>
             </div>
-            <div id="botonesHuertaInferiores">
+            <div id="botonesHuerta">
+                <button class="btnHuerta" id="btnAgregarCultivo">Agregar cultivo</button>
+                <button class="btnHuerta" id="guardarSalir">Guardar y salir</button>
                 <button class="btnHuerta" id="btnEliminarCultivo">Eliminar selección</button>
                 <button class="btnHuerta" id="btnCancelarCrear">Salir</button>
             </div>
-        </div>
-        <div id="agregarCultivo">
-            <div class="botonesAgregarCultivo">
-                <button id="btnCargarCultivo">Cargar cultivo</button>
-                <button id="btnListo">Listo</button>
+            <div id="agregarCultivo">
+                <div class="botonesAgregarCultivo">
+                    <button id="btnCargarCultivo" class="botonCargar">Cargar cultivo</button>
+                    <button id="btnListo" class="botonCargar">Listo</button>
+                </div>
             </div>
         </div>
         <div id="modificarCultivo">
-            <form>
-                <select id="dropDownModificarCultivos"></select>
-                <label for="cantidadCultivoModificar">Cantidad de plantas<input type="number" id="cantidadCultivoModificar"></label>
-                <label for="fechaSiembraModificar">Fecha de siembra<input type="date" id="fechaSiembraModificar"></label>
-            </form>
-            <button id="btnModificarCultivo">Guardar</button>
-            <button id="btnCancelarModificacion">Cancelar</button>
+            <div class="seccionModificarCultivo">
+                <div class="inputsModificar">
+                    <select id="dropDownModificarCultivos"></select>
+                    <label for="cantidadCultivoModificar">Cantidad de plantas</label>
+                    <input type="number" id="cantidadCultivoModificar" min="1">
+                    <label for="fechaSiembraModificar">Fecha de siembra</label>
+                    <input type="date" id="fechaSiembraModificar">
+                </div>
+                <div class="controlesModificar">
+                    <button class="btnHuerta" id="btnModificarCultivo">Guardar</button>
+                    <button class="btnHuerta" id="btnCancelarModificacion">Cancelar</button>
+                </div>
+            </div>
         </div>
     </div>
+    <footer>
+        <div>
+            <img src="../img/footer.png" alt="">
+        </div>
+    </footer>
+
     <script src="../js/luxon.min.js"></script>
     <script src="../js/sweetalert2.all.min.js"></script>
     <script src="../js/crear.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +8,41 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>Mis huertas</title>
 </head>
-<body>
-    
-   <div class="divPrincipal divPrincipalMisHuertas">
-     <table class="misHuertas">
-         <thead>
-             <th>ID</th><th>Huerta</th><th>Área (m2)</th><th>Área restante</th><th>Ver/Modificar</th><th>Eliminar</th></th>
-         </thead>
-         <tbody id="tablaMisHuertas">
-             
-         </tbody>
-     </table>
-     <div class="controles">
-         <button id="btnInicio">Inicio</button>
-         <button id="btnEliminarHuerta">Eliminar selección</button>
-     </div>
-   </div>
+
+<body class="bodySec">
+    <div class="logoSec">
+        <img src="../img/logo_sin_fondo.png" alt="">
+    </div>
+    <div class="divSecundario">
+        <div id="panelMisHuertas">
+            <table class="misHuertas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Huerta</th>
+                        <th>Área (m2)</th>
+                        <th>Área restante</th>
+                        <th>Ver/Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaMisHuertas">
+
+                </tbody>
+            </table>
+            <div class="controles">
+                <button class="btnHuerta" id="btnInicio">Inicio</button>
+                <button class="btnHuerta" id="btnEliminarHuerta">Eliminar selección</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <img src="../img/footer.png" alt="">
+        </div>
+    </footer>
     <script src="../js/sweetalert2.all.min.js"></script>
     <script src="../js/mishuertas.js"></script>
 </body>
+
 </html>
